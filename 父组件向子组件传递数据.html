@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <button-counter></button-counter>
+    </div>
+    <script src="js/vue.js"></script>
+    <script>
+        Vue.component("HelloWorld", {
+            //子组件接收的数据的名称叫做count
+            props: ['count','arr'],
+            data: function () {
+                return {
+                    msg: "呵呵"
+                }
+            },
+            template: "<div>{{msg}}，点击了{{count}}次,-------{{arr}}</div>"
+        })
+
+        //定义全局组件
+        Vue.component("button-counter", {
+            data: function () {
+                return {
+                    //此时返回的对象中包含的就是组件拥有的数据
+                    count: 0,
+                    arr:[1,2,3]
+                }
+            },
+            //template是一个字符串，他就是组件的html结构代码
+            template: `<div>
+                <button @click="handle">
+                点击了{{count}}次
+                </button>
+                <!-- :count是属性绑定，属性绑定的值是数据count  -->
+                <HelloWorld :count="count" :arr="arr"></HelloWorld>
+            </div>`,
+            //在组件中可以添加methods，methods中包含了组件需要调用的方法
+            methods: {
+                handle() {
+                    //this指的是button-counter组件对象
+                    this.count += 3;
+                }
+            }
+        })
+        var vm = new Vue({
+            el: "#app",
+            data: {
+
+            }
+        })
+    </script>
+</body>
+
+</html>

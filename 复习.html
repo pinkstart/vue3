@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    1.请问表单修饰符number，trim，lazy有什么作用？修饰符应该添加在什么位置
+    <input type="text" v-model.lazy="xxx">
+    number是用来转换数字的
+    trim去除开头和结尾的空格
+    lazy改变更新数据的时机，从一输入就改变数据的情形变成当焦点离开采取更新数据。
+
+    2.如何创建自定义指令？如何在自定义指令中携带参数？
+    <div v-color="test"></div>
+    Vue.directive("color",{
+        bind:function( element, binding ){
+            element.style.backgroundColor = binding.value;
+        },
+        inserted:function(){
+
+        }
+    })
+
+    3.如何创建一个计算属性？如何使用计算属性？
+    {{计算属性名称}}
+    <div v-text="计算属性名称"></div>
+
+    var vm = new Vue({
+        el:"#app",
+        data:{
+
+        },
+        computed:{
+            计算属性名称:function(){
+                return 结果;
+            }
+        }
+    })
+
+    4.如何创建一个过滤器，如何使用一个过滤器？
+    {{ 数据 | 过滤器名称 }}
+    <div v-text="数据 | 过滤器名称"></div>
+
+    Vue.filter( "过滤器名称",function( val ){
+        return 结果;
+    } )
+
+    
+
+</body>
+</html>
