@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <div>{{pmsg}}</div>
+        <menu-item :pstr='pstr' :pnum='12' :parr='parr'></menu-item>
+    </div>
+
+    <script src="./vue.js"></script>
+    <script>
+        Vue.component('menu-item', {
+            props: ['pstr', 'pnum', 'parr'],
+            template: `
+            <div>
+                <div> {{pstr}} </div>
+                <div> {{13 + pnum}} </div>
+                <ul>
+                    <li :key='index' v-for='(item,index) in parr'> {{item}} </li>
+                </ul>
+            </div>
+            `
+        })
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                pmsg: '父组件中的内容',
+                pstr: 'hello',
+                parr: ['apple', 'orange', 'lemon']
+            }
+        });
+    </script>
+</body>
+
+</html>

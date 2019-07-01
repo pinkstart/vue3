@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <hello-world></hello-world>
+        <Hello-zx></Hello-zx>
+        <Hello-hxk></Hello-hxk>
+        <test-com></test-com>
+    </div>
+
+
+    <script src="./vue.js"></script>
+    <script>
+        // 局部组件注册
+        Vue.component('test-com', {
+            template: '<div><top></top></div>'
+        })
+        var HelloWorld = {
+            data() {
+                return {
+                    msg: 'HelloWorld'
+                }
+            },
+            template: `<div>{{msg}}</div>`
+        };
+        var HelloZx = {
+            data() {
+                return {
+                    msg: 'HelloZx'
+                }
+            },
+            template: `<div>{{msg}}</div>`
+        };
+        var HelloHxk = {
+            data() {
+                return {
+                    msg: 'HelloHxk'
+                }
+            },
+            template: `<div>{{msg}}</div>`
+        };
+        var vm = new Vue({
+            el: '#app',
+            data: {
+
+            },
+            components: {
+                'hello-world': HelloWorld,
+                'hello-zx': HelloZx,
+                'hello-hxk': HelloHxk,
+            }
+        })
+    </script>
+</body>
+
+</html>
